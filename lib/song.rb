@@ -65,7 +65,7 @@ class Song
 
 end
 
-Song.new_from_filename("Taylor Swift - Blank Space.mp3")
+Song.create_from_filename("Taylor Swift - Blank Space.mp3")
 
 
 
