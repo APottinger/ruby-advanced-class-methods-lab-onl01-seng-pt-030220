@@ -5,9 +5,49 @@ class Song
   def self.all
     @@all
   end
-
+  
+  def self.create(name, artist_name)
+    song = self.new 
+    song.name = name
+    song.artist_name = artist_name
+    @@all << song
+  end
+  
+  def self.create_by_name(name)
+    song = self.new 
+    song.name = name
+    @@all << song
+    song 
+  end
+  
+  def self.new_by_name(name)
+    song = self.new 
+    song.name = name
+    song
+  end
+  
+  def self.find_by_name(name)
+    @@all.find {|song| song.name == name}
+    end 
+  end
+  
+  def self.find_or_create_by_name(name)
+    self.find_by_name(name) || self.create_by_name(name)
+  end
+    
+  def self.alphabetical
+    self.all.sort_by { |x| x.name}
+  end 
+  
   def save
-    self.class.all << self
+    self.all << self
   end
 
 end
+
+Song.create("Home", "Phillip Phillips")
+the_middle = Song.create_by_name("Home")
+the_middle
+Song.find_by_name("Home")
+
+Song.alphabetical
